@@ -1,54 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #fff8f6;
-  --foreground: #1a1218;
+:root,
+.light {
+  color-scheme: light;
+  --background: #faf8fc;
+  --foreground: #1e1528;
+  --muted: #6b6280;
+  --border: #e8e0f0;
   --surface: #ffffff;
-  --surface-elevated: #fffdfb;
-  --muted: #6b5a63;
-  --border: #f0d9e2;
-  --accent: #e11d74;
-  --accent-hover: #be125f;
-  --accent-soft: #fce7f0;
-  --secondary: #f97316;
-  --secondary-soft: #fff0e6;
-  --gradient-start: #ffe4ef;
-  --gradient-end: #fff3e8;
-  --shadow: 0 12px 40px -16px rgb(225 29 116 / 0.25);
-  --card-shadow: 0 8px 24px -12px rgb(26 18 24 / 0.12);
+  --accent: #7c5cbf;
+  --accent-hover: #6b4fad;
+  --accent-soft: #ede8f8;
+  --button-secondary-bg: #ffffff;
+  --button-secondary-hover: #f5f2fa;
+  --shadow: 0 1px 3px rgb(30 21 40 / 0.08);
+  --focus-ring: #7c5cbf;
 }
 
 .dark {
-  --background: #120c10;
-  --foreground: #faf5f7;
-  --surface: #1c1419;
-  --surface-elevated: #241a21;
-  --muted: #b8a3ad;
-  --border: #3d2a35;
-  --accent: #ff4d9a;
-  --accent-hover: #ff6dad;
-  --accent-soft: #3a1f2c;
-  --secondary: #fb923c;
-  --secondary-soft: #3a2618;
-  --gradient-start: #2a1520;
-  --gradient-end: #1f1510;
-  --shadow: 0 12px 40px -16px rgb(255 77 154 / 0.35);
-  --card-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.45);
+  color-scheme: dark;
+  --background: #14101c;
+  --foreground: #ede8f5;
+  --muted: #a89bb8;
+  --border: #2e2640;
+  --surface: #1c1626;
+  --accent: #9f8fef;
+  --accent-hover: #b0a6f5;
+  --accent-soft: #2a2340;
+  --button-secondary-bg: #1c1626;
+  --button-secondary-hover: #241e32;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  --focus-ring: #9f8fef;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    color-scheme: dark;
+    --background: #14101c;
+    --foreground: #ede8f5;
+    --muted: #a89bb8;
+    --border: #2e2640;
+    --surface: #1c1626;
+    --accent: #9f8fef;
+    --accent-hover: #b0a6f5;
+    --accent-soft: #2a2340;
+    --button-secondary-bg: #1c1626;
+    --button-secondary-hover: #241e32;
+    --shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+    --focus-ring: #9f8fef;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-surface: var(--surface);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
-  --color-secondary: var(--secondary);
-  --color-secondary-soft: var(--secondary-soft);
-  --font-sans: var(--font-outfit);
+  --font-sans: var(--font-inter);
 }
 
 * {
@@ -56,41 +68,65 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   min-height: 100dvh;
 }
 
-.page-glow {
-  background:
-    radial-gradient(
-      120% 80% at 50% -20%,
-      var(--gradient-start),
-      transparent 55%
-    ),
-    radial-gradient(
-      80% 50% at 100% 10%,
-      color-mix(in srgb, var(--secondary) 18%, transparent),
-      transparent 50%
-    ),
-    var(--background);
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
 }
 
-.tap-scale {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+@keyframes gentle-orbit {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.06);
+    opacity: 1;
+  }
 }
 
-.tap-scale:active {
-  transform: scale(0.98);
+.gentle-hint-core {
+  animation: gentle-float 3.2s ease-in-out infinite;
+}
+
+.gentle-hint-orbit-1 {
+  animation: gentle-orbit 2.8s ease-in-out infinite;
+}
+
+.gentle-hint-orbit-2 {
+  animation: gentle-orbit 3.4s ease-in-out 0.5s infinite;
+}
+
+.gentle-hint-orbit-3 {
+  animation: gentle-orbit 2.6s ease-in-out 1s infinite;
+}
+
+.collection-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.collection-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -98,7 +134,8 @@ body {
     scroll-behavior: auto;
   }
 
-  .tap-scale:active {
-    transform: none;
+  .gentle-hint-core,
+  .gentle-hint-orbit {
+    animation: none;
   }
 }

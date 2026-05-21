@@ -1,4 +1,4 @@
-# Ngọc Store — Bio Link
+# Hoa Ngọc — Bio Link
 
 Mobile-first bio link landing page for TikTok Shop traffic. Built with Next.js App Router, TypeScript, Tailwind CSS v4, and lucide-react.
 
@@ -40,20 +40,18 @@ Outbound clicks are tracked in `lib/analytics.ts` and wired on bio CTAs:
 
 | Event | Where |
 | --- | --- |
-| `click_tiktok_shop` | TikTok Shop link cards, footer, video cards |
-| `click_instagram` | Instagram link cards, footer, video cards |
-| `click_facebook_reels` | Facebook Reels link cards, footer, video cards |
-| `click_collection` | Collection “Xem gợi ý” buttons |
+| `click_tiktok_shop` | TikTok link, footer brand name |
+| `click_instagram` | Instagram link |
 
 Register these as custom events in GA4 (**Admin → Events**) if you want them in standard reports.
 
 ## Edit content
 
-All copy and URLs live in `lib/data.ts`.
+Copy in `lib/data.ts`. URLs & SĐT trong `lib/links.ts`. Collection phối đồ trong `lib/collections.ts`.
 
 ## Replace assets
 
-See `public/` — `avatar.jpg`, `og-cover.jpg`, `collection-1.jpg`, `collection-2.jpg`, `collection-3.jpg`.
+See `public/` — `avatar.png`. Favicon: `app/favicon.ico`.
 
 ## Build
 

@@ -4,7 +4,6 @@ import type { SocialPlatform } from "@/lib/data";
 export const CTA_EVENTS = {
   TIKTOK_SHOP: "click_tiktok_shop",
   INSTAGRAM: "click_instagram",
-  FACEBOOK_REELS: "click_facebook_reels",
   COLLECTION: "click_collection",
 } as const;
 
@@ -32,8 +31,6 @@ export function getCtaEventForPlatform(
       return CTA_EVENTS.TIKTOK_SHOP;
     case "instagram":
       return CTA_EVENTS.INSTAGRAM;
-    case "facebook":
-      return CTA_EVENTS.FACEBOOK_REELS;
     default:
       return null;
   }
@@ -46,8 +43,6 @@ export function getCtaEventForFooterLabel(label: string): CtaEventName | null {
       return CTA_EVENTS.TIKTOK_SHOP;
     case "Instagram":
       return CTA_EVENTS.INSTAGRAM;
-    case "Facebook":
-      return CTA_EVENTS.FACEBOOK_REELS;
     default:
       return null;
   }
