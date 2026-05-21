@@ -114,10 +114,7 @@ export function CollectionScroll({ className }: CollectionScrollProps) {
                 "active:scale-[0.98]",
               )}
             >
-              <span className="text-[10px] font-medium uppercase tracking-wide text-muted">
-                Phối đồ
-              </span>
-              <span className="mt-1.5 block text-sm font-semibold leading-snug text-foreground">
+              <span className="block text-sm font-semibold leading-snug text-foreground">
                 {item.title}
               </span>
             </a>
