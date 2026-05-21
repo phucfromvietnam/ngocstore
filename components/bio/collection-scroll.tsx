@@ -108,13 +108,13 @@ export function CollectionScroll({ className }: CollectionScrollProps) {
                 })
               }
               className={cn(
-                "w-[8.75rem] shrink-0 snap-start rounded-xl border border-border bg-surface p-3.5 text-left shadow-[var(--shadow)]",
+                "flex min-h-[5.5rem] w-[8.75rem] shrink-0 snap-start items-center justify-center rounded-xl border border-border bg-surface p-3.5 shadow-[var(--shadow)]",
                 "transition-colors hover:border-accent/50 hover:bg-accent-soft/50",
                 "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
                 "active:scale-[0.98]",
               )}
             >
-              <span className="block text-sm font-semibold leading-snug text-foreground">
+              <span className="text-center text-xs font-semibold leading-snug text-foreground">
                 {item.title}
               </span>
             </a>
