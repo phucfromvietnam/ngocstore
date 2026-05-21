@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff8f6;
+  --foreground: #1a1218;
+  --surface: #ffffff;
+  --surface-elevated: #fffdfb;
+  --muted: #6b5a63;
+  --border: #f0d9e2;
+  --accent: #e11d74;
+  --accent-hover: #be125f;
+  --accent-soft: #fce7f0;
+  --secondary: #f97316;
+  --secondary-soft: #fff0e6;
+  --gradient-start: #ffe4ef;
+  --gradient-end: #fff3e8;
+  --shadow: 0 12px 40px -16px rgb(225 29 116 / 0.25);
+  --card-shadow: 0 8px 24px -12px rgb(26 18 24 / 0.12);
+}
+
+.dark {
+  --background: #120c10;
+  --foreground: #faf5f7;
+  --surface: #1c1419;
+  --surface-elevated: #241a21;
+  --muted: #b8a3ad;
+  --border: #3d2a35;
+  --accent: #ff4d9a;
+  --accent-hover: #ff6dad;
+  --accent-soft: #3a1f2c;
+  --secondary: #fb923c;
+  --secondary-soft: #3a2618;
+  --gradient-start: #2a1520;
+  --gradient-end: #1f1510;
+  --shadow: 0 12px 40px -16px rgb(255 77 154 / 0.35);
+  --card-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.45);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-soft: var(--secondary-soft);
+  --font-sans: var(--font-outfit);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  min-height: 100dvh;
+}
+
+.page-glow {
+  background:
+    radial-gradient(
+      120% 80% at 50% -20%,
+      var(--gradient-start),
+      transparent 55%
+    ),
+    radial-gradient(
+      80% 50% at 100% 10%,
+      color-mix(in srgb, var(--secondary) 18%, transparent),
+      transparent 50%
+    ),
+    var(--background);
+}
+
+.tap-scale {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.tap-scale:active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .tap-scale:active {
+    transform: none;
+  }
+}
