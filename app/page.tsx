@@ -35,6 +35,7 @@ export default function Home() {
             {profile.zaloLabel}
             <a
               href={CONTACT.zaloPhoneTel}
+              aria-label={`Gọi Zalo ${CONTACT.zaloPhoneDisplay}`}
               className="font-semibold text-accent underline decoration-accent/50 underline-offset-2 transition-colors hover:text-accent-hover"
             >
               {CONTACT.zaloPhoneDisplay}
@@ -45,12 +46,23 @@ export default function Home() {
           {profile.note}
         </p>
 
-        <CollectionScroll className="mt-6" />
+        <section className="mt-6 w-full" aria-labelledby="collections-heading">
+          <h2
+            id="collections-heading"
+            className="mb-2 text-left text-xs font-semibold uppercase tracking-wide text-muted"
+          >
+            Gợi ý phối đồ
+          </h2>
+          <CollectionScroll />
+        </section>
 
         <nav
-          aria-label="Liên kết chính"
+          aria-labelledby="main-links-heading"
           className="mt-6 flex w-full flex-col gap-3"
         >
+          <h2 id="main-links-heading" className="sr-only">
+            Mua đồ và theo dõi mạng xã hội
+          </h2>
           {mainLinks.map((link) => (
             <LinkButton
               key={link.id}
@@ -68,9 +80,12 @@ export default function Home() {
       </main>
 
       <section
-        aria-label="Theo dõi"
+        aria-labelledby="follow-heading"
         className="mt-auto flex w-full flex-col items-center gap-4 pt-10"
       >
+        <h2 id="follow-heading" className="sr-only">
+          Theo dõi Ngọc Store
+        </h2>
         <SocialRow className="mt-0" />
         <FooterFollow />
       </section>

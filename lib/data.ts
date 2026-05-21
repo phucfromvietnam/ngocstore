@@ -49,8 +49,12 @@ export const socialLinks = [
 ] as const;
 
 export const siteMeta = {
-  title: "Hoa Ngọc | Bio link",
+  brandName: "Ngọc Store",
+  title: "Ngọc Store | Link mua đồ và video phối đồ",
   description:
-    "Bio link Hoa Ngọc — mua trên TikTok Shop, xem outfit trên Instagram.",
-  url: "https://ngocstore.example.com",
+    "Trang bio link chính thức của Ngọc Store — tổng hợp TikTok Shop, Instagram và gợi ý phối đồ dễ mặc, nữ tính, trendy của Hoa Ngọc.",
+  sameAs: {
+    tiktok: LINKS.tiktokShop,
+    instagram: LINKS.instagram,
+  },
 } as const;
